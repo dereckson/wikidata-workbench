@@ -53,7 +53,7 @@ class TaskRunner {
     }
     
     /**
-     * Determines if the specified task exist
+     * Determines if the task exist
      * 
      * @return bool true if the task exists; otherwise, false.
      */
