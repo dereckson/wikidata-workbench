@@ -35,9 +35,3 @@ class QuickStatementsGenerator {
         return $instructions;
     }
 }
-
-/*
-CREATE
-
-LAST TAB Lfr TAB "Le croissant magnifique!"
-*/
