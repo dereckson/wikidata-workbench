@@ -23,6 +23,13 @@ class QuickStatementsGenerator {
         }
     }
     
+    public static function formatValue ($value) {
+        if (\strpos($value, " ")) {
+            return '"' . $value . '"';
+        }
+        return $value;
+    }
+
     public static function createItem (Item $item) {
         $lang = static::DEFAULT_LABEL_LANGUAGE;
         
@@ -30,7 +37,7 @@ class QuickStatementsGenerator {
         $instructions[] = "CREATE";
         $instructions[] = "LAST\tL$lang\t$item->title";
         foreach ($item->getClaims() as $property => $value) {
-            $instructions[] = "LAST\t$property\t$value";
+            $instructions[] = "LAST\t$property\t" . static::formatValue($value);
         }
         return $instructions;
     }
