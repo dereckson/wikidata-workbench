@@ -31,11 +31,12 @@ class QuickStatementsGenerator {
     }
 
     public static function createItem (Item $item) {
-        $lang = static::DEFAULT_LABEL_LANGUAGE;
-        
         $instructions = [];
         $instructions[] = "CREATE";
-        $instructions[] = "LAST\tL$lang\t$item->title";
+        if (property_exists($item, 'title')) {
+            $lang = static::DEFAULT_LABEL_LANGUAGE;
+            $instructions[] = "LAST\tL$lang\t" . static::formatValue($value);
+        }
         foreach ($item->getClaims() as $property => $value) {
             $instructions[] = "LAST\t$property\t" . static::formatValue($value);
         }
